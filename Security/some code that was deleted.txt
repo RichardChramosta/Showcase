@@ -1,0 +1,25 @@
+    protected UserDetailsService userDetailsService() {
+        UserDetails annath = User.builder()
+                .username("annath")
+                .password(passwordEncoder.encode("password"))
+//                .roles(ApplicationUserRole.STUDENT.name())
+                .authorities(ApplicationUserRole.STUDENT.getGrantedAuthorities())
+                .build();
+        UserDetails linda = User.builder()
+                .username("linda")
+                .password(passwordEncoder.encode("lala123"))
+                //.roles(ApplicationUserRole.ADMIN.name())
+                .authorities(ApplicationUserRole.ADMIN.getGrantedAuthorities())
+                .build();
+        UserDetails tom = User.builder()
+                .username("tom")
+                .password(passwordEncoder.encode("lala123"))
+               // .roles(ApplicationUserRole.ADMINTRAINEE.name())
+                .authorities(ApplicationUserRole.ADMINTRAINEE.getGrantedAuthorities())
+                .build();
+        return new InMemoryUserDetailsManager(
+                annath,
+                linda,
+                tom
+        );
+    }

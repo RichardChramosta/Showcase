@@ -1,0 +1,49 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <title>Title</title>
+  <link rel="stylesheet" th:href="@{/styles.css}"/>
+</head>
+<body>
+<table>
+  <tr>
+    <th>User: </th>
+    <th th:text="${user.getName()}">
+
+    </th>
+  </tr>
+</table>
+<form action="#" th:action="@{'/submit/'+${user.getId()}}">
+  <button type="submit">Submit new Post</button></form>
+<h1>Trending posts</h1>
+<table>
+  <thead>
+  <tr>
+    <th style="color: lightgrey">upvotes</th>
+    <th></th>
+    <th></th>
+    <th>Posts</th>
+  </tr>
+  </thead>
+  <tbody>
+  <tr th:each="post: ${posts}" th:object="${post}">
+    <td th:text="${post.getUpvotes()}"></td>
+
+    <td><form  action="#" th:action="@{'/loginpage/' + ${user.getId()} + '/upvote?postId=' + ${post.getId()}}" method="post">
+      <button type="submit"> + </button>
+    </form></td>
+    <td><form  action="#" th:action="@{'/loginpage/' + ${user.getId()} + '/downvotes?postId=' + ${post.getId()}}" method="post">
+      <button type="submit"> - </button>
+    </form></td>
+    <!--    <td  th:text="${post.getDescription}"> </td>-->
+    <td> <form  action="#" th:action="@{'/loginpage/' + ${user.getId()} + '/postpage?postId=' + ${post.getId()}}" method="post">
+      <button type="submit" th:text="${post.getDescription}">  </button>
+    </form></td>
+  </tr>
+  </tbody>
+
+</table>
+
+</body>
+</html>

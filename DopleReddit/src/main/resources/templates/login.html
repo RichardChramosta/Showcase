@@ -1,0 +1,50 @@
+<!DOCTYPE html>
+<html xmlns:th="http://www.thymeleaf.org">
+<head>
+  <meta charset="UTF-8">
+  <title>Login</title>
+  <link rel="stylesheet" th:href="@{/styles.css}"/>
+</head>
+<body>
+<h1>Welcome to Reddit. You need to login or register!</h1>
+
+
+<form th:action="@{/login}" method="post">
+  <div class="input">
+    <h1>Please login with name and password!</h1>
+    <label for="name">Name:</label>
+    <input id="name" name="name" type="text">
+    <!--        <button class="go-button" type="submit">GO</button>-->
+    <!--                <input  type="submit" value="recognize name">-->
+
+    <!--    </div>-->
+    <!--    <div class="input">-->
+    <br>
+    <label for="userpassword">Password:</label>
+    <input id="userpassword" name="password" type="password">
+    <!--        <button class="go-button" type="submit">GO</button>-->
+    <input  type="submit" value="recognize name">
+
+  </div>
+</form>
+<br>
+<form th:action="@{/register}" method="post">
+  <div class="input">
+    <h1>Please register wit name and password!</h1>
+    <label for="Regname">Name:</label>
+    <input id="Regname" name="name" type="text">
+    <!--        <button class="go-button" type="submit">GO</button>-->
+    <!--                <input  type="submit" value="recognize name">-->
+
+    <!--    </div>-->
+    <!--    <div class="input">-->
+    <br>
+    <label for="REguserpassword">Password:</label>
+    <input id="REguserpassword" name="password" type="password">
+    <!--        <button class="go-button" type="submit">GO</button>-->
+    <input  type="submit" value="recognize name">
+
+  </div>
+</form>
+</body>
+</html>

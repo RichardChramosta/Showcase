@@ -1,0 +1,27 @@
+<!DOCTYPE html>
+<html xmlns:th="http://www.thymeleaf.org">
+<head>
+    <meta charset="UTF-8">
+    <title>Marked movies</title>
+</head>
+<body style="border: black solid 3px">
+<table >
+    <thead>
+    <tr>
+        <th>Id</th>
+        <th>Name</th>
+        <th>Type</th>
+        <th>Date</th>
+    </tr>
+    </thead>
+    <tbody>
+    <tr th:each="movie:${movies}">
+        <td th:text="${movie.getId()}"></td>
+        <td th:text="${movie.getName()}"></td>
+        <td th:text="${movie.getType()}"></td>
+        <td th:text="${movie.date}"></td>
+    </tr>
+    </tbody>
+</table>
+</body>
+</html>

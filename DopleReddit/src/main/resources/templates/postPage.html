@@ -1,0 +1,39 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <title>Title</title>
+  <link rel="stylesheet" th:href="@{/styles.css}"/>
+</head>
+<body>
+<table>
+  <thead>
+  <tr>
+    <th th:text="'Posted by: '+${user.getName()}"></th>
+
+    <th th:text="${post.getDescription()}"></th>
+  </tr>
+  <tr>
+
+    <th colspan="2" th:text="${post.getContent()}"></th>
+  </tr>
+  </thead>
+  <tbody>
+
+  <tr>
+    <td></td>
+    <td></td>
+  </tr>
+  </tbody>
+</table>
+<form action="#" th:action="@{'/loginpage/'+${userid} +'/postcomment/'+${postId}}" method="post">
+  <div class="input">
+    <label for="text">your comment:</label>
+    <input id="text" name="text" value="" type="text">
+  </div>
+
+  <div>
+    <input  type="submit" value="Submit"></div>
+</form>
+</body>
+</html>
