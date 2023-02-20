@@ -34,30 +34,36 @@ public class PostServiceImpl implements PostService {
     Optional<User> optional = userRepository.findAllById(id);
     return optional.get();
   }
+
   @Override
   public List<Post> findAll() {
     return postRepository.findAll();
   }
+
   @Override
   public void saveUser(User user) {
     userRepository.save(user);
   }
+
   @Override
   public User findUser(String name, String password) {
 
     Optional<User> optional = userRepository.findByNameAndPassword(name, password);
     return optional.get();
   }
+
   @Override
   public Post findPostById(Long postId) {
     Optional<Post> optional = postRepository.findAllById(postId);
 
     return optional.get();
   }
+
   @Override
   public void incrementUpvotes(Post post) {
     postRepository.save(post);
   }
+
   @Override
   public void savePost(Post post, Long UserId) {
     post.setPostuser(userService.findAllById(UserId));
