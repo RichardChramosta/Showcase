@@ -14,8 +14,9 @@ import java.util.Date;
 import java.util.List;
 
 @Entity
-@Table(name ="posts")
+@Table(name = "posts")
 public class Post {
+
   @Id
   @GeneratedValue(strategy = GenerationType.AUTO)
   private long id;
@@ -35,13 +36,14 @@ public class Post {
   @ManyToOne
   @JoinColumn(name = "userId")
   private User postUser;
+
   public Post() {
   }
 
   public Post(String description, String content) {
     this.description = description;
     this.content = content;
-    this.upvotes=0;
+    this.upvotes = 0;
   }
 
   public List<Comment> getMycomments() {

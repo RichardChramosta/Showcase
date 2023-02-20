@@ -13,6 +13,7 @@ import java.util.List;
 @Entity
 @Table(name = "user")
 public class User {
+
   @Id
   @GeneratedValue(strategy = GenerationType.AUTO)
   private long id;
@@ -20,7 +21,7 @@ public class User {
   private String name;
 
   private String password;
-  @OneToMany(mappedBy= "commentUser",  cascade = CascadeType.ALL, fetch = FetchType.LAZY)
+  @OneToMany(mappedBy = "commentUser", cascade = CascadeType.ALL, fetch = FetchType.LAZY)
   private List<Comment> userComments;
   @OneToMany(mappedBy = "postUser", cascade = CascadeType.ALL, fetch = FetchType.LAZY)
   private List<Post> posts;

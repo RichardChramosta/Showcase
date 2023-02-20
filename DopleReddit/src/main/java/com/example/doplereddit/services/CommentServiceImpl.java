@@ -6,17 +6,20 @@ import org.springframework.stereotype.Service;
 
 @Service
 public class CommentServiceImpl implements CommentService {
+
   private final CommentRepository commentRepository;
-  private  final UserServiceImpl userService;
+  private final UserServiceImpl userService;
   private final PostServiceImpl postService;
 
-  public CommentServiceImpl( CommentRepository commentService, UserServiceImpl userService,
+  public CommentServiceImpl(CommentRepository commentService, UserServiceImpl userService,
       PostServiceImpl postService) {
     this.commentRepository = commentService;
     this.userService = userService;
     this.postService = postService;
   }
-  public void saveComments(Comment comment, Long userId, Long postId){
+
+  @Override
+  public void saveComments(Comment comment, Long userId, Long postId) {
     comment.setCommentUser(userService.findAllById(userId));
     comment.setThisPost(postService.findPostById(postId));
     commentRepository.save(comment);
