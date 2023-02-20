@@ -12,6 +12,8 @@ import com.example.doplereddit.services.PostService;
 import com.example.doplereddit.services.PostServiceImpl;
 import com.example.doplereddit.services.UserService;
 import com.example.doplereddit.services.UserServiceImpl;
+import java.util.List;
+import java.util.Optional;
 import org.springframework.stereotype.Controller;
 import org.springframework.ui.Model;
 import org.springframework.web.bind.annotation.GetMapping;
@@ -50,8 +52,11 @@ public class MainController {
   @PostMapping("/login")
   public String LoginTransition(@RequestParam(name = "name", required = false) String name,
       @RequestParam(name = "password", required = false) String password, Model model) {
-    User user = postService.findUser(name, password);
-    Long UserId = user.getId();
+    Optional<User> optional = postService.findUser(name, password);
+    if (optional.isEmpty()) {
+      return "redirect:/";
+    }
+    Long UserId = optional.get().getId();
     return "redirect:/loginpage/" + UserId;
   }
 
@@ -117,7 +122,8 @@ public class MainController {
     model.addAttribute("userid", UserId);
     model.addAttribute("postId", postId);
     model.addAttribute("user", post.getPostuser());
-    //  List<Comment> comments = commentService.findAllcomments(postId);
+    List<Comment> comments = commentService.findTheComments(post.getId());
+    model.addAttribute("comments",comments);
 
     return "postPage";
   }

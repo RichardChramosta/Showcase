@@ -38,32 +38,27 @@ public class DopleRedditApplication implements CommandLineRunner {
   @Override
   public void run(String... args) throws Exception {
 
-    String workshop = "this is workshop posts, nothing to be learn here";
-    User user = new User("Richard", "tralala");
-    userRepository.save(user);
-    Post post1 = new Post("It works as we intended it to in Internet Explorer.", workshop);
-    Post post2 = new Post("Polish history in on picture", workshop);
-    Post post3 = new Post("Motion sensors were not installed the right way.", workshop);
-    Post post4 = new Post("This sing at my gym", workshop);
-
-    long helpid = user.getId();
-
-    post1.setPostuser(userService.findAllById(helpid));
-    post2.setPostuser(userService.findAllById(helpid));
-    post3.setPostuser(userService.findAllById(helpid));
-    post4.setPostuser(userService.findAllById(helpid));
-    post1.setUpvotes(554);
-    post2.setUpvotes(44);
-    post3.setUpvotes(8);
-    post4.setUpvotes(2);
-    postRepository.save(post1);
-    postRepository.save(post2);
-    postRepository.save(post3);
-    postRepository.save(post4);
+//    String workshop = "this is workshop posts, nothing to be learn here";
+//    User user = new User("Richard", "tralala");
+//    userRepository.save(user);
+//    Post post1 = new Post("It works as we intended it to in Internet Explorer.", workshop);
+//    Post post2 = new Post("Polish history in on picture", workshop);
+//    Post post3 = new Post("Motion sensors were not installed the right way.", workshop);
+//    Post post4 = new Post("This sing at my gym", workshop);
 //
-//        Comment comment = new Comment("ohh I like that");
-//        comment.setCommentUser(userService.findAllById(37L));
-//        comment.setThisPost(postService.findPostById(41L));
-//        commentRepository.save(comment);
+//    long helpid = user.getId();
+//
+//    post1.setPostuser(userService.findAllById(helpid));
+//    post2.setPostuser(userService.findAllById(helpid));
+//    post3.setPostuser(userService.findAllById(helpid));
+//    post4.setPostuser(userService.findAllById(helpid));
+//    post1.setUpvotes(554);
+//    post2.setUpvotes(44);
+//    post3.setUpvotes(8);
+//    post4.setUpvotes(2);
+//    postRepository.save(post1);
+//    postRepository.save(post2);
+//    postRepository.save(post3);
+//    postRepository.save(post4);
   }
 }

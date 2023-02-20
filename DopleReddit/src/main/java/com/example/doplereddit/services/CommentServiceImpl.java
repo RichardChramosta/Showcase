@@ -2,6 +2,8 @@ package com.example.doplereddit.services;
 
 import com.example.doplereddit.models.Comment;
 import com.example.doplereddit.repositories.CommentRepository;
+import java.util.ArrayList;
+import java.util.List;
 import org.springframework.stereotype.Service;
 
 @Service
@@ -23,5 +25,17 @@ public class CommentServiceImpl implements CommentService {
     comment.setCommentUser(userService.findAllById(userId));
     comment.setThisPost(postService.findPostById(postId));
     commentRepository.save(comment);
+  }
+
+  @Override
+  public List<Comment> findTheComments(Long postId) {
+    List<Comment> commentsOfThePost = commentRepository.findAll();
+    for (Comment comment: commentsOfThePost
+    ) {
+      if (comment.getThisPost().getId() != postId) {
+        commentsOfThePost.remove(comment);
+      }
+    }
+    return commentsOfThePost;
   }
 }

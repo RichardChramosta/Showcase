@@ -11,6 +11,7 @@
   <tr>
     <th th:text="'Posted by: '+${user.getName()}"></th>
 
+  </tr><tr>
     <th th:text="${post.getDescription()}"></th>
   </tr>
   <tr>
@@ -34,6 +35,27 @@
 
   <div>
     <input  type="submit" value="Submit"></div>
+</form>
+
+
+<table>
+  <thead>
+  <tr>
+    <th>posted at:</th>
+
+    <th>Comment</th>
+  </tr>
+  </thead>
+  <tbody>
+  <tr th:each="comment: ${comments}" th:object="${comment}">
+    <td th:text="${comment.getPostedAt()}"></td>
+    <td th:text="${comment.getText()}"></td>
+  </tr>
+  </tbody>
+
+</table>
+<form action="#" th:action="@{'/postsubmit/'+${userid}}" method="post">
+  <input  type="submit" value="Leave this place"></div>
 </form>
 </body>
 </html>

@@ -3,6 +3,7 @@ package com.example.doplereddit.services;
 import com.example.doplereddit.models.Post;
 import com.example.doplereddit.models.User;
 import java.util.List;
+import java.util.Optional;
 
 public interface PostService {
 
@@ -14,7 +15,7 @@ public interface PostService {
 
   void saveUser(User user);
 
-  User findUser(String name, String password);
+  Optional<User> findUser(String name, String password);
 
   Post findPostById(Long postId);
 

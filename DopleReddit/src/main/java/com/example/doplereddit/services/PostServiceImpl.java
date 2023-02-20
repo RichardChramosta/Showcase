@@ -46,10 +46,10 @@ public class PostServiceImpl implements PostService {
   }
 
   @Override
-  public User findUser(String name, String password) {
+  public Optional<User> findUser(String name, String password) {
 
     Optional<User> optional = userRepository.findByNameAndPassword(name, password);
-    return optional.get();
+    return optional;
   }
 
   @Override
