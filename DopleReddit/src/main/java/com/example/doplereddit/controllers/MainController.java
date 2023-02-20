@@ -95,7 +95,7 @@ public class MainController {
   @GetMapping(value = "/submit/{UserId}")
   public String submiNewPost(Model model, @PathVariable(name = "UserId") Long UserId) {
     model.addAttribute("userid", UserId);
-    return "submitPost";
+    return "submitPage";
 
   }
 
