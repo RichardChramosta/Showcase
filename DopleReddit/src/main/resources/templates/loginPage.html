@@ -41,8 +41,15 @@
       <button type="submit" th:text="${post.getDescription}">  </button>
     </form></td>
   </tr>
-  </tbody>
 
+  </tbody>
+  <div th:each="postNumber: ${numberOfPosts}" th:object="${postNumber}">
+    <td th:text="${postNumber}"></td>
+
+    <td><form  action="#" th:action="@{'/loginpage/' + ${user.getId()} + '/postpage/' + ${postNumber}}" method="get">
+      <button type="submit" th:text="${postNumber}"></button>
+    </form></td>
+   </div>
 </table>
 
 </body>

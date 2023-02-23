@@ -76,11 +76,18 @@ public class MainController {
   public String LogAndSurf(Model model, @PathVariable(name = "UserId") Long UserId) {
 
     model.addAttribute("user", postService.readUser(UserId));
-
-    model.addAttribute("posts", postRepository.findAll());
+    model.addAttribute("numberOfPosts", postService.countPosts());
+    model.addAttribute("posts", postService.fivePosts(0));
     return "loginPage";
   }
+  @GetMapping(value = "/loginpage/{UserId}/page/{pageNumber}")
+  public String LogSurfPagging(Model model, @PathVariable(name = "UserId") Long UserId,@PathVariable(name="pageNumber") int pageNumber) {
 
+    model.addAttribute("user", postService.readUser(UserId));
+    model.addAttribute("numberOfPosts", postService.countPosts());
+    model.addAttribute("posts", postService.fivePosts(pageNumber));
+    return "loginPage";
+  }
   @PostMapping(value = "/loginpage/{UserId}/upvote")
   public String incementUpvotes(Long postId, @PathVariable(name = "UserId") Long UserId) {
     Post post = postService.findPostById(postId);

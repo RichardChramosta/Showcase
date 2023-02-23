@@ -4,6 +4,7 @@ import com.example.doplereddit.models.Post;
 import com.example.doplereddit.models.User;
 import com.example.doplereddit.repositories.PostRepository;
 import com.example.doplereddit.repositories.UserRepository;
+import java.util.ArrayList;
 import java.util.List;
 import java.util.Optional;
 import org.springframework.stereotype.Service;
@@ -68,5 +69,30 @@ public class PostServiceImpl implements PostService {
   public void savePost(Post post, Long UserId) {
     post.setPostuser(userService.findAllById(UserId));
     postRepository.save(post);
+  }
+
+  @Override
+  public List<Post> fivePosts(int i) {
+    List<Post> allPosts = findAll();
+    for (int j = 0; j < allPosts.size(); j++) {
+      List<Post> outputPosts = new ArrayList<>();
+      for (int k = 0; k < 5; k++) {
+        outputPosts.add(allPosts.get((j*5)+k));
+      }
+      if (i == j) {
+        return outputPosts;
+      }
+    }
+    return null;
+  }
+
+  @Override
+  public int countPosts() {
+    List<Post> allPosts = findAll();
+    int sum = 0;
+    for (Post post: allPosts) {
+      sum++;
+    }
+    return (sum/5)+1;
   }
 }

@@ -22,4 +22,8 @@ public interface PostService {
   void incrementUpvotes(Post post);
 
   void savePost(Post post, Long UserId);
+
+  List<Post> fivePosts(int i);
+
+  int countPosts();
 }
