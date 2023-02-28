@@ -46,7 +46,7 @@
   <div th:each="postNumber: ${numberOfPosts}" th:object="${postNumber}">
     <td th:text="${postNumber}"></td>
 
-    <td><form  action="#" th:action="@{'/loginpage/' + ${user.getId()} + '/postpage/' + ${postNumber}}" method="get">
+    <td><form  action="#" th:action="@{'/loginpage/' + ${user.getId()} + '/page/' + ${postNumber}}" method="get">
       <button type="submit" th:text="${postNumber}"></button>
     </form></td>
    </div>

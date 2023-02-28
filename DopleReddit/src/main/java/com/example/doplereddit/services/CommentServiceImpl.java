@@ -29,11 +29,12 @@ public class CommentServiceImpl implements CommentService {
 
   @Override
   public List<Comment> findTheComments(Long postId) {
-    List<Comment> commentsOfThePost = commentRepository.findAll();
-    for (Comment comment: commentsOfThePost
+    List<Comment> Allcomments = commentRepository.findAll();
+    List<Comment> commentsOfThePost = new ArrayList<>();
+    for (Comment comment: Allcomments
     ) {
-      if (comment.getThisPost().getId() != postId) {
-        commentsOfThePost.remove(comment);
+      if (comment.getThisPost().getId() == postId) {
+        commentsOfThePost.add(comment);
       }
     }
     return commentsOfThePost;

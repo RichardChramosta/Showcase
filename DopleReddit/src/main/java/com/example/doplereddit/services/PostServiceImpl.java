@@ -78,6 +78,9 @@ public class PostServiceImpl implements PostService {
       List<Post> outputPosts = new ArrayList<>();
       for (int k = 0; k < 5; k++) {
         outputPosts.add(allPosts.get((j*5)+k));
+        if (k+1 + (j*5) > allPosts.size()) {
+          break;
+        }
       }
       if (i == j) {
         return outputPosts;
@@ -85,7 +88,23 @@ public class PostServiceImpl implements PostService {
     }
     return null;
   }
-
+  @Override
+  public List<Post> fivePosts2(Integer i) {
+    List<Post> allPosts = findAll();
+    for (int j = 0; j < allPosts.size(); j++) {
+      List<Post> outputPosts = new ArrayList<>();
+      for (int k = 0; k < 5; k++) {
+        outputPosts.add(allPosts.get((j*5)+k));
+        if (k+1 + (j*5) >= allPosts.size()) {
+          break;
+        }
+      }
+      if ((i-1) == j) {
+        return outputPosts;
+      }
+    }
+    return null;
+  }
   @Override
   public int countPosts() {
     List<Post> allPosts = findAll();

@@ -81,15 +81,15 @@ public class MainController {
     return "loginPage";
   }
   @GetMapping(value = "/loginpage/{UserId}/page/{pageNumber}")
-  public String LogSurfPagging(Model model, @PathVariable(name = "UserId") Long UserId,@PathVariable(name="pageNumber") int pageNumber) {
+  public String LogSurfPagging(Model model, @PathVariable(name = "UserId") Long UserId,@PathVariable(name="pageNumber") Integer pageNumber) {
 
     model.addAttribute("user", postService.readUser(UserId));
     model.addAttribute("numberOfPosts", postService.countPosts());
-    model.addAttribute("posts", postService.fivePosts(pageNumber));
+    model.addAttribute("posts", postService.fivePosts2(pageNumber));
     return "loginPage";
   }
   @PostMapping(value = "/loginpage/{UserId}/upvote")
-  public String incementUpvotes(Long postId, @PathVariable(name = "UserId") Long UserId) {
+  public String incrementUpvotes(Long postId, @PathVariable(name = "UserId") Long UserId) {
     Post post = postService.findPostById(postId);
     post.setUpvotes(post.getUpvotes() + 1);
     postService.incrementUpvotes(post);

@@ -26,4 +26,6 @@ public interface PostService {
   List<Post> fivePosts(int i);
 
   int countPosts();
+
+  List<Post> fivePosts2(Integer pageNumber);
 }
