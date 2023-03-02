@@ -106,12 +106,29 @@ public class PostServiceImpl implements PostService {
     return null;
   }
   @Override
-  public int countPosts() {
+  public List<Integer> countPosts() {
     List<Post> allPosts = findAll();
     int sum = 0;
     for (Post post: allPosts) {
       sum++;
     }
-    return (sum/5)+1;
+    List<Integer> pages = new ArrayList<>();
+    for (int i = 0; i < (sum/5); i++) {
+      pages.add(i+1);
+    }
+    return pages;
+  }
+
+  @Override
+  public Integer postPage(Long postId) {
+    List<Post> allPosts = findAll();
+    for (int i = 1; i < (allPosts.size() / 5) + 1; i++) {
+      for (int k = 0; k < 5; k++) {
+        if (allPosts.get(((i-1) * 5) + k).getId() == postId) {
+          return i;
+        }
+      }
+    }
+    return 1;
   }
 }

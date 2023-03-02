@@ -76,7 +76,7 @@ public class MainController {
   public String LogAndSurf(Model model, @PathVariable(name = "UserId") Long UserId) {
 
     model.addAttribute("user", postService.readUser(UserId));
-    model.addAttribute("numberOfPosts", postService.countPosts());
+    model.addAttribute("pages", postService.countPosts());
     model.addAttribute("posts", postService.fivePosts(0));
     return "loginPage";
   }
@@ -84,7 +84,7 @@ public class MainController {
   public String LogSurfPagging(Model model, @PathVariable(name = "UserId") Long UserId,@PathVariable(name="pageNumber") Integer pageNumber) {
 
     model.addAttribute("user", postService.readUser(UserId));
-    model.addAttribute("numberOfPosts", postService.countPosts());
+    model.addAttribute("pages", postService.countPosts());
     model.addAttribute("posts", postService.fivePosts2(pageNumber));
     return "loginPage";
   }
@@ -93,7 +93,12 @@ public class MainController {
     Post post = postService.findPostById(postId);
     post.setUpvotes(post.getUpvotes() + 1);
     postService.incrementUpvotes(post);
-    return "redirect:/loginpage/" + UserId;
+    Integer page = postService.postPage(postId);
+    if (page == 1){
+      return "redirect:/loginpage/" + UserId;
+    }else {
+      return "redirect:/loginpage/" + UserId + "/page/" + page;
+    }
   }
 
   @PostMapping(value = "/loginpage/{UserId}/downvotes")
@@ -101,7 +106,12 @@ public class MainController {
     Post post = postService.findPostById(postId);
     post.setUpvotes(post.getUpvotes() - 1);
     postService.incrementUpvotes(post);
-    return "redirect:/loginpage/" + UserId;
+    Integer page = postService.postPage(postId);
+      if (page == 1){
+        return "redirect:/loginpage/" + UserId;
+      }else {
+        return "redirect:/loginpage/" + UserId + "/page/" + page;
+      }
   }
 
   @GetMapping(value = "/submit/{UserId}")

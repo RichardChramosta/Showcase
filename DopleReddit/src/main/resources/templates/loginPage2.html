@@ -41,15 +41,15 @@
       <button type="submit" th:text="${post.getDescription}">  </button>
     </form></td>
   </tr></table>
-  <table>
+<table>
   </tbody>
   <td th:each="postNumber: ${pages}" th:object="${postNumber}">
-<!--    <td th:text="${postNumber}"></td>-->
+    <!--    <td th:text="${postNumber}"></td>-->
 
     <form  action="#" th:action="@{'/loginpage/' + ${user.getId()} + '/page/' + ${postNumber}}" method="get">
       <button type="submit" th:text="${postNumber}"></button>
     </form>
-   </td>
+  </td>
 </table>
 
 </body>
