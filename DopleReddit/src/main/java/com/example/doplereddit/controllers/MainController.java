@@ -46,6 +46,7 @@ public class MainController {
 
   @GetMapping("/")
   public String MainPage() {
+
     return "login";
   }
 
@@ -54,7 +55,8 @@ public class MainController {
       @RequestParam(name = "password", required = false) String password, Model model) {
     Optional<User> optional = postService.findUser(name, password);
     if (optional.isEmpty()) {
-      return "redirect:/";
+      model.addAttribute("message","Wrong user name or password.");
+      return "login";
     }
     Long UserId = optional.get().getId();
     return "redirect:/loginpage/" + UserId;

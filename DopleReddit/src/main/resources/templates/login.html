@@ -12,6 +12,7 @@
 <form th:action="@{/login}" method="post">
   <div class="input">
     <h1>Please login with name and password!</h1>
+    <h2 th:text="${message}" style="color: red"></h2>
     <label for="name">Name:</label>
     <input id="name" name="name" type="text">
     <!--        <button class="go-button" type="submit">GO</button>-->
