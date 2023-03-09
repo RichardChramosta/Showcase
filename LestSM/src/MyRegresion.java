@@ -39,24 +39,6 @@ public class MyRegresion {
         System.out.print(" + ");
         System.out.printf("%.3f", c);
 
-//        public static int findSumWithoutUsingStream(int[] array) {
-//            int sum = 0;
-//            for (int value : array) {
-//                sum += value;
-//            }
-//            return sum;
-//        }
-//        public static int findSumUsingStream(int[] array) {
-//            return Arrays.stream(array).sum();
-//        }
-
-
-//        double meanX = Arrays.stream(x).sum() / n;
-//        double meanY = Arrays.stream(y).sum() / n;
-//
-//
-//        double c = meanY - b * meanX;
-
 
     }
     private static double calculateA(double[] x, double[] y) {
@@ -84,8 +66,7 @@ public class MyRegresion {
             sumOfX2andX += x2[i]*x[i];
         }
         // a = aup1 * aup2  -  aup3 * aup4  /  adown1 * adown2  -  adown3 * adown4
-       // double aup0 =(sumOfSsquareX2 *(sumOfSsquareX2-((sumOfArrayX2*sumOfArrayY)/n)))-((sumOfX2andX-((sumOfArrayX*sumOfArrayX2)/n))*sumOfX2andY-((sumOfArrayX2*sumOfArrayY)/n));
-       // double aup1 = sumOfSsquareX2 -((sumOfArrayX2)/n);
+       // I divide it because it was too long
         double aup1 = sumOfSquareX -((sumOfArrayX*sumOfArrayX)/n);
         double aup2 =sumOfX2andY-((sumOfArrayX2*sumOfArrayY)/n);
         double aup3 =(sumOfX2andX-((sumOfArrayX*sumOfArrayX2)/n));
